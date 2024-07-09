@@ -16,6 +16,7 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
+import org.xml.sax.SAXException;
 
 import com.github.hwc2243.servicebuilder.service.BuilderArgs;
 import com.github.hwc2243.servicebuilder.service.BuilderService;
@@ -56,15 +57,19 @@ public class ServiceBuilderMojo extends AbstractMojo {
 		args.setOutputDir("src/main/java");
 		
 		getLog().info("Build-service");
-		BuilderService builderService = new BuilderServiceImpl();
 		
 		try
 		{
+			BuilderService builderService = new BuilderServiceImpl();
 			builderService.build(args);
 		}
 		catch (IOException ex)
 		{
 			throw new MojoExecutionException("Failed to build service", ex);
+		}
+		catch (SAXException ex)
+		{
+			throw new MojoExecutionException("Failed to parse service", ex);
 		}
 	}
 }
