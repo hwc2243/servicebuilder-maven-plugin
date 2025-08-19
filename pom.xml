@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.hwc2243</groupId>
 	<artifactId>servicebuilder-maven-plugin</artifactId>
-	<version>0.3.1-SNAPSHOT</version>
+	<version>0.3.4-SNAPSHOT</version>
 	<name>servicebuilder-maven-plugin</name>
 	<packaging>maven-plugin</packaging>
 	<description>Spring Service Builder Maven Plugin</description>
@@ -15,7 +15,7 @@
 		<java.version>17</java.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-                <servicebuilder.version>0.4.0-SNAPSHOT</servicebuilder.version>
+        <servicebuilder.version>0.7.0-SNAPSHOT</servicebuilder.version>
 	</properties>
 
 	<build>
