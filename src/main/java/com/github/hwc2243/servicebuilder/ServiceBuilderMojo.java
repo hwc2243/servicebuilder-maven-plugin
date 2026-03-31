@@ -22,7 +22,7 @@ import org.xml.sax.SAXException;
 import com.github.hwc2243.servicebuilder.service.BuilderArgs;
 import com.github.hwc2243.servicebuilder.service.BuilderService;
 import com.github.hwc2243.servicebuilder.service.BuilderServiceImpl;
-import com.github.hwc2243.servicebuilder.service.ServiceException;
+import com.github.hwc2243.servicebuilder.service.BuildException;
 
 @Mojo(name = "buildservice", defaultPhase = LifecyclePhase.GENERATE_SOURCES)
 public class ServiceBuilderMojo extends AbstractMojo {
@@ -102,11 +102,9 @@ public class ServiceBuilderMojo extends AbstractMojo {
 		try {
 			BuilderService builderService = new BuilderServiceImpl();
 			builderService.build(args);
-		} catch (IOException ex) {
-			throw new MojoExecutionException("Failed to build service", ex);
 		} catch (SAXException ex) {
 			throw new MojoExecutionException("Failed to parse service", ex);
-		} catch (ServiceException ex) {
+		} catch (BuildException ex) {
 			throw new MojoExecutionException("Failed to build service", ex);
 		}
 	}
